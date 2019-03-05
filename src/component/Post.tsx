@@ -5,7 +5,7 @@ interface IPostProps {
     idPost: number;
 }
 
-export class Post extends React.Component<IPostProps, void> {
+export class Post extends React.Component<IPostProps, any> {
 
     public render() {
         return (
