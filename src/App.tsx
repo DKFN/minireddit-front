@@ -4,14 +4,10 @@ import * as React from 'react';
 import './App.css';
 
 import logo from './logo.svg';
-import {RedditClient} from "./utils/RedditClient";
 import {Post} from "./component/Post";
 
 class App extends React.Component {
-    public componentDidMount() {
-        RedditClient.getPost(1)
-            .then((x) => x.json().then((z) => console.log(z)));
-    }
+
 
   public render() {
     return (
