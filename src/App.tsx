@@ -11,7 +11,7 @@ class App extends React.Component {
   public render() {
     return (
       <div className="App">
-            <Post idPost={1}/>
+            <Post idPost={4}/>
       </div>
     );
   }

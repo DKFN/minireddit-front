@@ -1,6 +1,9 @@
-/* tslint:disbale */
+/* tslint:disable */
+
 import * as React from "react";
 import {RedditClient} from "../utils/RedditClient";
+import {Parent} from "./Parent";
+
 
 interface IPostProps {
     idPost: number;
@@ -20,7 +23,7 @@ export class Post extends React.Component<IPostProps, IPostState> {
     }
 
     public componentDidMount() {
-        RedditClient.getPost(1)
+        RedditClient.getPost(this.props.idPost)
             .then((x) =>
                 x.json()
                     .then((z) => this.setState({post: z})
@@ -29,8 +32,10 @@ export class Post extends React.Component<IPostProps, IPostState> {
 
     public render() {
         const post = this.state.post;
+        console.log(post);
         if (post) {
-            return (<b>{post.title}</b>)
+            const prts = <Parent arrayProps={post.parents}/>
+            return (<div>{prts}<b>{post.message}</b></div>)
         } else {
             return (<b> Chargement .... patientez</b>);
         }
