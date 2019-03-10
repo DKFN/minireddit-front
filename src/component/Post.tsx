@@ -20,7 +20,7 @@ export class Post extends React.Component<IPostProps, IPostState> {
     }
 
     public componentDidMount() {
-        RedditClient.getPost(1)
+        RedditClient.getPost(this.props.idPost)
             .then((x) =>
                 x.json()
                     .then((z) => this.setState({post: z})

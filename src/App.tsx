@@ -11,7 +11,14 @@ class App extends React.Component {
   public render() {
     return (
       <div className="App">
-            <Post idPost={1}/>
+            <Post idPost={4}/>
+	<form>
+		<text>{`Name\n`}</text>
+		<label>
+			<input type="text" name="name" style={{ height : 200}}/>
+		</label>
+		<input type="submit" name="Submit"/>
+	</form>
       </div>
     );
   }
