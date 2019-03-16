@@ -10,8 +10,9 @@ class App extends React.Component {
 
   public render() {
     return (
-      <div className="App">
-            <Post idPost={4}/>
+        <div className="App">
+          <Post idPost={1}/>
+        </div>
 	<form>
 		<text>{`Name\n`}</text>
 		<label>
