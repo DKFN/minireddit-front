@@ -10,9 +10,9 @@ class App extends React.Component {
 
   public render() {
     return (
-      <div className="App">
-            <Post idPost={4}/>
-      </div>
+        <div className="App">
+          <Post idPost={1}/>
+        </div>
     );
   }
 }

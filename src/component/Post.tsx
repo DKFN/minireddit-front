@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import {RedditClient} from "../utils/RedditClient";
-import {Parent} from "./Parent";
+import {Family} from "./Family";
 
 
 interface IPostProps {
@@ -25,6 +25,8 @@ export class Post extends React.Component<IPostProps, IPostState> {
     public componentDidMount() {
         RedditClient.getPost(this.props.idPost)
             .then((x) =>
+//                if (x.status >= 400)
+                    // Diplay
                 x.json()
                     .then((z) => this.setState({post: z})
                     ));
@@ -34,8 +36,22 @@ export class Post extends React.Component<IPostProps, IPostState> {
         const post = this.state.post;
         console.log(post);
         if (post) {
-            const prts = <Parent arrayProps={post.parents}/>
-            return (<div>{prts}<b>{post.message}</b></div>)
+            const length = post.parents && post.parents.length || 0;
+            console.log(length);
+            const prts = post.parents && <Family arrayProps={post.parents} marge={length - 1}/>;
+            const chlds = post.replies && <Family arrayProps={post.replies} marge={length + 1}/>;
+            return (
+                <div>
+                    {prts}
+                    <b>
+                        <div className="media" style={{marginLeft:length * 25}}>
+                            <div className="media-left">{post.author}</div>
+                            <div className="media-content">{post.message}</div>
+                            <div className="media-right"></div>
+                        </div>
+                    </b>
+                    {chlds}
+                </div>)
         } else {
             return (<b> Chargement .... patientez</b>);
         }
