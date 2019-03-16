@@ -20,16 +20,21 @@ export class Post extends React.Component<IPostProps, IPostState> {
         this.state = {
             post: undefined
         };
+        this.loadPost = this.loadPost.bind(this);
     }
 
-    public componentDidMount() {
+    public loadPost(){
         RedditClient.getPost(this.props.idPost)
             .then((x) =>
 //                if (x.status >= 400)
-                    // Diplay
+                // Diplay
                 x.json()
                     .then((z) => this.setState({post: z})
                     ));
+    }
+
+    public componentDidMount() {
+       this.loadPost();
     }
 
     public render() {
@@ -38,16 +43,19 @@ export class Post extends React.Component<IPostProps, IPostState> {
         if (post) {
             const length = post.parents && post.parents.length || 0;
             console.log(length);
-            const prts = post.parents && <Family arrayProps={post.parents} marge={length - 1}/>;
-            const chlds = post.replies && <Family arrayProps={post.replies} marge={length + 1}/>;
+            const prts = post.parents && <Family arrayProps={post.parents} marge={length - 1} loadPost={this.loadPost}/>;
+            const chlds = post.replies && <Family arrayProps={post.replies} marge={length + 1} loadPost={this.loadPost}/>;
             return (
-                <div>
+                <div style={{width:"500px", marginLeft:"15%"}}>
                     {prts}
                     <b>
                         <div className="media" style={{marginLeft:length * 25}}>
                             <div className="media-left">{post.author}</div>
                             <div className="media-content">{post.message}</div>
-                            <div className="media-right"></div>
+                            <div className="media-right">
+                                <a className="far fa-thumbs-up" onClick={() => {RedditClient.postLike(post.id); this.loadPost()}} style={{marginRight:"10px"}}>{post.likes}</a>
+                                <a className="far fa-thumbs-down" onClick={() => {RedditClient.postDislike(post.id); this.loadPost()}} style={{marginRight:"10px"}}>{post.dislikes}</a>
+                            </div>
                         </div>
                     </b>
                     {chlds}
