@@ -10,15 +10,13 @@ class _RedditClient {
     }
 
     public getPost(postId: number) {
-        console.log(process.env);
-        console.log(this.BASE_URL());
         return fetch(this.BASE_URL() + "post/" + postId.toString());
     }
     public postLike(postId: number) {
-        return fetch(this.BASE_URL() + postId.toString(), { method : "PUT" });
+        return fetch(this.BASE_URL() + "like/" + postId.toString(), { method : "PUT" });
     }
     public postDislike(postId: number) {
-        return fetch(this.BASE_URL() + postId.toString(), { method : "PUT" });
+        return fetch(this.BASE_URL() + "dislike/" + postId.toString(), { method : "PUT" });
     }
 }
 
