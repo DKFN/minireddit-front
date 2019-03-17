@@ -11,7 +11,8 @@
   },
   "scripts": {
     "start": "react-scripts-ts start",
-    "build": "react-scripts-ts build",
+    "start-custom": "react-scripts-ts start --env REACT_APP_APIURL=",
+    "build": "react-scripts-ts build --env REACT_APP_APIURL=",
     "test": "react-scripts-ts test --env=jsdom",
     "eject": "react-scripts-ts eject"
   },

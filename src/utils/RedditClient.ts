@@ -1,14 +1,24 @@
 /* tslint:disable */
 
 class _RedditClient {
+
+
+    private BASE_URL() {
+        return process.env.NODE_ENV === 'development' || process.env.REACT_APP_APIURL
+            ? "http://localhost/"
+            : process.env.REACT_APP_APIURL; // "http://reddit-backend.tetel.in/";
+    }
+
     public getPost(postId: number) {
-        return fetch("http://localhost/post/" + postId);
+        console.log(process.env);
+        console.log(this.BASE_URL());
+        return fetch(this.BASE_URL() + "post/" + postId.toString());
     }
     public postLike(postId: number) {
-        return fetch("http://localhost/like/" + postId, { method : "PUT" });
+        return fetch(this.BASE_URL() + postId.toString(), { method : "PUT" });
     }
     public postDislike(postId: number) {
-        return fetch("http://localhost/dislike/" + postId, { method : "PUT" });
+        return fetch(this.BASE_URL() + postId.toString(), { method : "PUT" });
     }
 }
 
