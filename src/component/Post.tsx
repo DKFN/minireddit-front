@@ -54,7 +54,7 @@ export class Post extends React.Component<IPostProps, IPostState> {
                                 <div className="tile notification is-warning">
                                     {post.author}</div>
                                 </div>
-                            <div className="tile notification is-dark media-content">{post.message}</div>
+                            <div className="tile notification is-dark media-content post-root">{post.message}</div>
                             <div className="media-right">
                                 <a className="far fa-thumbs-up button is-success" onClick={() => {RedditClient.postLike(post.id); setTimeout(() => this.loadPost(), 50)}} style={{marginRight:"10px"}}> {post.likes}</a>
                                 <a className="far fa-thumbs-down button is-danger" onClick={() => {RedditClient.postDislike(post.id); setTimeout(() => this.loadPost(), 50)}} style={{marginRight:"10px"}}> {post.dislikes}</a>
