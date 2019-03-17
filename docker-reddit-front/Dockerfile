@@ -8,7 +8,7 @@ RUN chgrp node -R /usr/local/lib/node_modules && chmod 775 -R /usr/local/lib/nod
 
 WORKDIR /data
 
-COPY cypress.json /data
+COPY . /data
 
 ADD launch.sh /app/launch.sh
 
