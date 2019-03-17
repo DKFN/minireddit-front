@@ -2,10 +2,9 @@ FROM cypress/browsers:chrome67-ff57
 
 RUN npm i -g cypress
 
-COPY ../cypress.json /data
-COPY . /data
-
 WORKDIR /data
+
+COPY ./ /data
 
 ADD launch.sh /app/launch.sh
 
