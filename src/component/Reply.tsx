@@ -16,13 +16,13 @@ export const Reply = () => <section className="hero is-dark" >
                 </div>
                     <div className="level-right">
                         <div id="control">
-				            <input type="text" className="text primary"/>
+				            <input type="text" className="text primary action-name" name="name"/>
                         </div>
                     </div>
 
                 </div>
                 <div className="level">
-                    <textarea className="textarea" name="name"/>
+                    <textarea className="textarea action-message" name="message"/>
                 </div>
                 <input type="submit" className="button is-primary" name="Submit"/>
                 </div>
