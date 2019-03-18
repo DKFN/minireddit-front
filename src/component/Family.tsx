@@ -20,7 +20,7 @@ export class Family extends React.Component<IParentProps, any> {
                         const prts = elmt.parents && <Family arrayProps={elmt.parents} marge={marge - 1} loadPost={this.props.loadPost}/>;
                         const chlds = elmt.replies && <Family arrayProps={elmt.replies} marge={marge + 1} loadPost={this.props.loadPost}/>;
                         const ret =
-                                    <div className="media" style={{marginLeft:marge * 25}}>
+                                    <div className="media" style={{marginLeft:marge * 25, marginTop: 20}}>
                                         <div className="media-left tile notification is-info">{elmt.author}</div>
                                         <div className="media-content tile notification" style={{minWidth: 400}}>{elmt.message}</div>
                                         <div className="media-right">
