@@ -32,6 +32,9 @@ export class Post extends React.Component<IPostProps, IPostState> {
                     this.setState({chaos: true});
                 x.json()
                     .then((z) => this.setState({post: z}))
+            })
+            .catch((r) => {
+                this.setState({chaos: true});
             });
     }
 
