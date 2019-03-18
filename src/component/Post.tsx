@@ -11,6 +11,7 @@ interface IPostProps {
 
 interface IPostState {
     post?: any; // TODO : Define post interface
+    chaos: boolean;
 }
 
 export class Post extends React.Component<IPostProps, IPostState> {
@@ -18,19 +19,20 @@ export class Post extends React.Component<IPostProps, IPostState> {
     public constructor(props: IPostProps, state: IPostState) {
         super(props, state);
         this.state = {
-            post: undefined
+            post: undefined,
+            chaos: false,
         };
         this.loadPost = this.loadPost.bind(this);
     }
 
     public loadPost(idPost?: number){
         RedditClient.getPost(idPost || this.props.idPost)
-            .then((x) =>
-//                if (x.status >= 400)
-                // Diplay
+            .then((x) => {
+                if (x.status == 400)
+                    this.setState({chaos: true});
                 x.json()
-                    .then((z) => this.setState({post: z})
-                    ));
+                    .then((z) => this.setState({post: z}))
+            });
     }
 
     public componentDidMount() {
@@ -64,7 +66,7 @@ export class Post extends React.Component<IPostProps, IPostState> {
                     {chlds}
                 </div>)
         } else {
-            return (<b> Chargement .... patientez</b>);
+            return this.state.chaos ? (<img src="https://i.stack.imgur.com/DC6C1.png"/>) : (<b> Chargement .... patientez</b>);
         }
     }
 }
