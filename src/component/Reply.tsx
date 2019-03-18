@@ -22,7 +22,7 @@ export const Reply = () => <section className="hero is-dark" >
 
                 </div>
                 <div className="level">
-                    <input type="textarea" className="textarea" name="name"/>
+                    <textarea className="textarea" name="name"/>
                 </div>
                 <input type="submit" className="button is-primary" name="Submit"/>
                 </div>

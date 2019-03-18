@@ -15,8 +15,8 @@ class App extends React.Component {
             <section className="hero is-primary" >
             <div className="hero-body">
                     <div className="container">
-                        <h1 className="title">
-                            Your answer
+                        <h1 className="title level-left">
+                            MiniReddit !
                         </h1>
                     </div>
 

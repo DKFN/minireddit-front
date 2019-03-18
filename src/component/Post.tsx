@@ -49,12 +49,15 @@ export class Post extends React.Component<IPostProps, IPostState> {
                 <div style={{width:"500px", marginLeft:"15%"}}>
                     {prts}
                     <b>
-                        <div className="media" style={{marginLeft:length * 25}}>
-                            <div className="media-left">{post.author}</div>
-                            <div className="media-content">{post.message}</div>
+                        <div className="media" style={{marginLeft:length * 25, marginTop: 20, minWidth: 500}}>
+                            <div className="media-left">
+                                <div className="tile notification is-warning">
+                                    {post.author}</div>
+                                </div>
+                            <div className="tile notification is-dark media-content">{post.message}</div>
                             <div className="media-right">
-                                <a className="far fa-thumbs-up" onClick={() => {RedditClient.postLike(post.id); this.loadPost()}} style={{marginRight:"10px"}}>{post.likes}</a>
-                                <a className="far fa-thumbs-down" onClick={() => {RedditClient.postDislike(post.id); this.loadPost()}} style={{marginRight:"10px"}}>{post.dislikes}</a>
+                                <a className="far fa-thumbs-up button is-success" onClick={() => {RedditClient.postLike(post.id); this.loadPost()}} style={{marginRight:"10px"}}> {post.likes}</a>
+                                <a className="far fa-thumbs-down button is-danger" onClick={() => {RedditClient.postDislike(post.id); this.loadPost()}} style={{marginRight:"10px"}}> {post.dislikes}</a>
                             </div>
                         </div>
                     </b>
