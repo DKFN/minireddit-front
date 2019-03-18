@@ -12,6 +12,11 @@ class _RedditClient {
     public getPost(postId: number) {
         return fetch(this.BASE_URL() + "post/" + postId.toString());
     }
+
+    public getVersion() {
+        return fetch(this.BASE_URL() + "version");
+    }
+
     public postLike(postId: number) {
         return fetch(this.BASE_URL() + "like/" + postId.toString(), { method : "PUT" });
     }
