@@ -6,7 +6,7 @@ import {RedditClient} from "../utils/RedditClient";
 interface IParentProps {
     arrayProps : [];
     marge : number;
-    loadPost : () => void;
+    loadPost : (idPost?: number) => void;
 }
 
 export class Family extends React.Component<IParentProps, any> {
@@ -26,6 +26,7 @@ export class Family extends React.Component<IParentProps, any> {
                                         <div className="media-right">
                                             <a className="far fa-thumbs-up button is-success" onClick={() => {RedditClient.postLike(elmt.id); setTimeout(() => this.props.loadPost(), 50)}} style={{marginRight:"10px"}}> {elmt.likes}</a>
                                             <a className="far fa-thumbs-down button is-danger" onClick={() => {RedditClient.postDislike(elmt.id); setTimeout(() => this.props.loadPost(), 50)}} style={{marginRight:"10px"}}> {elmt.dislikes}</a>
+                                            <a className="far fa-envelope button is-info" onClick={() => {RedditClient.postDislike(elmt.id); setTimeout(() => this.props.loadPost(elmt.id), 50)}} style={{marginRight:"10px"}}> =></a>
                                         </div>
                                     </div>;
                         return ( <div> {prts} {ret} {chlds} </div>)

@@ -23,8 +23,8 @@ export class Post extends React.Component<IPostProps, IPostState> {
         this.loadPost = this.loadPost.bind(this);
     }
 
-    public loadPost(){
-        RedditClient.getPost(this.props.idPost)
+    public loadPost(idPost?: number){
+        RedditClient.getPost(idPost || this.props.idPost)
             .then((x) =>
 //                if (x.status >= 400)
                 // Diplay
