@@ -24,8 +24,8 @@ export class Family extends React.Component<IParentProps, any> {
                                         <div className="media-left tile notification is-info">{elmt.author}</div>
                                         <div className="media-content tile notification" style={{minWidth: 400}}>{elmt.message}</div>
                                         <div className="media-right">
-                                            <a className="far fa-thumbs-up button is-success" onClick={() => {RedditClient.postLike(elmt.id); this.props.loadPost()}} style={{marginRight:"10px"}}> {elmt.likes}</a>
-                                            <a className="far fa-thumbs-down button is-danger" onClick={() => {RedditClient.postDislike(elmt.id); this.props.loadPost()}} style={{marginRight:"10px"}}> {elmt.dislikes}</a>
+                                            <a className="far fa-thumbs-up button is-success" onClick={() => {RedditClient.postLike(elmt.id); setTimeout(() => this.props.loadPost(), 50)}} style={{marginRight:"10px"}}> {elmt.likes}</a>
+                                            <a className="far fa-thumbs-down button is-danger" onClick={() => {RedditClient.postDislike(elmt.id); setTimeout(() => this.props.loadPost(), 50)}} style={{marginRight:"10px"}}> {elmt.dislikes}</a>
                                         </div>
                                     </div>;
                         return ( <div> {prts} {ret} {chlds} </div>)
