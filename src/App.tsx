@@ -33,7 +33,7 @@ class App extends React.Component<any, any> {
             <div className="hero-body">
                     <div className="container">
                         <h1 className="title level-left">
-                            MiniReddit !
+                            MiniReddit ! Hello :)
                         </h1>
                         <h1 className="subtitle level-left">
                             {this.state.version || "Loading ..."}
